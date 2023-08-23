@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 int num_atoi(char *str)
 {

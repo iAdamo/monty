@@ -1,5 +1,5 @@
-#ifndef MAIN
-#define MAIN
+#ifndef MONTY_H
+#define MONTY_H
 /*=================Library_Header============================================*/
 
 #include <stdio.h>
@@ -44,8 +44,25 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*===========================================================================*/
 
+typedef struct global_vars
+{
+	char *buffer;
+	FILE *file;
+	int op_args;
+} global_vars;
+
+
+
+
+
+
+
+
+void free_dlistint(stack_t *head);
+/*===========================================================================*/
+void push_error(FILE *fd, char *line, stack_t *stack, int count);
+void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
 
 void  check_opcode(FILE *);
 void run_bytecode(char *op, char *token, size_t rd, FILE *f, char *l);

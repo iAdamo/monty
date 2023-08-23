@@ -1,10 +1,11 @@
-#include "main.h"
+#include "monty.h"
+global_vars glob_vars;
 /**
  * main - Main Entry to Monty construct
  * @ac: args count
  * @av: agrs vector
  * Return: 0 on success
-*/
+ */
 int main(int ac, char **av)
 {
 	FILE *file;
@@ -26,43 +27,50 @@ int main(int ac, char **av)
 	return (0);
 }
 
-/**
- * check_opcode -  check if file contains an invalid instruction,
- * print the error message
- * @file: file stream
- * Return: Nothing
-*/
-void  check_opcode(FILE *file)
-{
-	size_t read_count = 1, len = 0, i;
-	int flag;
-	char *line, *token;
-	char *opcode[] = {"push", "pall", NULL};
 
-	while (getline(&line, &len, file) != EOF)
+/**
+ * check_opcode - Checks if file contains valid instructions and processes them.
+ * @file: Pointer to the input file.
+ */
+void check_opcode(FILE *file)
+{
+	char *line = NULL;
+	size_t line_len = 0;
+	char *token;
+	char *opcode[] = {"push", "pall", NULL};
+	size_t read_count = 1;
+	size_t i;
+	int flag;
+
+	while (fgets(line, line_len, file) != NULL)
 	{
+		token = strtok(line, " \n");
+		if (token == NULL)
+		{
+			read_count++;
+			continue;
+		}
+
 		i = 0;
 		flag = 0;
-		token = strtok(line, " \n");
+
 		while (opcode[i])
 		{
-			if (token == NULL || strcmp(opcode[i], token) == 0)
+			if (strcmp(opcode[i], token) == 0)
 			{
 				flag = 1;
 				break;
 			}
 			i++;
 		}
+
 		if (flag == 0)
-			print_error(read_count, opcode[i], file, line);
-		while (token)
-		{
-			token = strtok(NULL, " \n");
-			run_bytecode(opcode[i], token, read_count, file, line);
-			break;
-		}
+			print_error(read_count, token, file, line);
+
+		run_bytecode(token, strtok(NULL, " \n"), read_count, file, line);
 		read_count++;
 	}
+
 	fclose(file);
 	if (line)
 		free(line);
@@ -73,12 +81,18 @@ void  check_opcode(FILE *file)
  * @line: each line of the file
  * @token: num argument
  * Return: Nothing
-*/
+ */
 void run_bytecode(char *op, char *token, size_t rd, FILE *f, char *l)
 {
+	instruction_t op_var[] = {
+		{"push", push},
+		{"pall", pall},
+	};
+
 	stack_t *head;
 	void (*func)(stack_t **stack, unsigned int line_number);
-	unsigned int code;
+	int code;
+	int i;
 
 	if ((strcmp(op, "pall") != 0) && (code = num_atoi(token)) == -1 )
 	{
@@ -88,16 +102,11 @@ void run_bytecode(char *op, char *token, size_t rd, FILE *f, char *l)
 			free(l);
 		exit(EXIT_FAILURE);
 	}
-
-	instruction_t op_var[] = {
-		{"push", push},
-		{"pall", pall},
-	};
-	int i = 0;
+	i = 0;
 	while ((op_var[i].opcode) && (strcmp(op_var[i].opcode, op) != 0))
 		i++;
 	func = op_var[i].f;
-	
+
 	func(&head, code);	
 }
 
@@ -109,7 +118,7 @@ void run_bytecode(char *op, char *token, size_t rd, FILE *f, char *l)
  * @file: file stream for memory close
  * @line: buffer to free
  * Return: Nothing
-*/
+ */
 void print_error(size_t d, char *str, FILE *file, char *line)
 {
 	fprintf(stderr, "L%ld: unknown instruction %s\n", d, str);

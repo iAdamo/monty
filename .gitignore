@@ -1,0 +1,8 @@
+*.swo
+*.swp
+*/
+.*.swo
+.*.swn
+.*.swp
+a
+b

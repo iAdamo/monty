@@ -59,7 +59,7 @@ void handle_instruction(FILE *file);
 void end_program(void);
 void exit_program(void);
 void free_stack(stack_t **stack);
-int clean_arg(char *num_arg);
+int clean_atoi(char *num_arg);
 
 
 #endif

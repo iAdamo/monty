@@ -1,5 +1,7 @@
 push 1
-       push 2
-push 3
-    
-pall jjjj
+push 1024
+push 5
+
+push 4
+push 4
+pall

@@ -35,12 +35,12 @@ void handle_instruction(FILE *file)
 			i++;
 		if (op[i].opcode == NULL)
 			instruct_error(line_count, instruct);
-		if (strcmp(op[i].opcode, "pall") != 0 && (clean_atoi(num_arg) == 0))
+		if (strcmp(op[i].opcode, "pall") != 0 && (clean_atoi(num_arg) == NULL))
 			int_error(line_count);
 		else
 		{
 			op_address = op[i].f;
-			num = clean_atoi(num_arg);
+			num = iclean_atoi(num_arg);
 			op_address(&stack_h, num);
 		}
 		line_count++;

@@ -43,9 +43,35 @@ void free_stack(stack_t **stack)
 /**
  * clean_atoi - cleans opcode argumnts to unsigned integers
  * @num_arg: opcode argument
- * Return: unsigned integer on success, -1 on failure
+ * Return: a string on success, NULL on failure
 */
-int clean_atoi(char *num_arg)
+char *clean_atoi(char *num_arg)
+{
+	int i = 0;
+	int sign = 1;
+	int num = 0;
+
+	if (num_arg == NULL)
+		return (NULL);
+	while (num_arg[i])
+	{
+		if (num_arg[i] == '-')
+			sign *= -1;
+		else if (num_arg[i] >= '0' && num_arg[i] <= '9')
+			num = (num * 10) + (num_arg[i] - '0');
+		else
+			return (NULL);
+		i++;
+	}
+	return ("cool");
+}
+
+/**
+ * iclean_atoi - cleans opcode argumnts to unsigned integers
+ * @num_arg: opcode argument
+ * Return: integer on success, 0 on failure
+*/
+int iclean_atoi(char *num_arg)
 {
 	int i = 0;
 	int sign = 1;
@@ -63,5 +89,5 @@ int clean_atoi(char *num_arg)
 			return (0);
 		i++;
 	}
-	return (sign * num);
+	return (num);
 }

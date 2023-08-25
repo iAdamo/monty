@@ -47,7 +47,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)));
 
 
-void arg_error(char *prog_name);
+void arg_error(void);
 void file_error(char *fyle);
 void int_error(int line_count);
 void mem_error(void);
@@ -59,7 +59,8 @@ void handle_instruction(FILE *file);
 void end_program(void);
 void exit_program(void);
 void free_stack(stack_t **stack);
-int clean_atoi(char *num_arg);
+char *clean_atoi(char *num_arg);
+int iclean_atoi(char *num_arg);
 
 
 #endif

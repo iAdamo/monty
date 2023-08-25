@@ -12,7 +12,7 @@ stack_t *stack_h;
 int main(int ac, char **av)
 {
 	if (ac != 2)
-		arg_error(av[0]);
+		arg_error();
 	file = fopen(av[1], "r");
 	if (file == NULL)
 		file_error(av[1]);

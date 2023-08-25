@@ -1,12 +1,11 @@
 #include "monty.h"
 /**
  * arg_error - exit program on failure for inadequate argument to the program
- * @prog_name: programe name
  * Return: Nothing
 */
-void arg_error(char *prog_name)
+void arg_error(void)
 {
-	fprintf(stderr, "USAGE: %s file\n", prog_name);
+	fprintf(stderr, "USAGE: monty file\n");
 	exit_program();
 }
 /**

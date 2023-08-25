@@ -7,8 +7,9 @@
 void handle_instruction(FILE *file)
 {
 	char *instruct, *num_arg;
-	int i = 0, line_count = 1;
+	int i, line_count = 1;
 	size_t len = 0;
+	unsigned int num;
 	void (*op_address)(stack_t **stack, unsigned int line_number);
 	instruction_t op[] = {
 		{"push", push},
@@ -19,21 +20,25 @@ void handle_instruction(FILE *file)
 	while ((getline(&line, &len, file)) != -1)
 	{
 		instruct = strtok(line, " \n");
+		if (instruct == NULL)
+			continue;
 		while (instruct)
 		{
 			num_arg = strtok(NULL, " \n");
 			break;
 		}
-		while (op[i].opcode && (strcmp(op[i].opcode, instruct)) != 0)
+		i = 0;
+		while ((op[i].opcode) && (strcmp(op[i].opcode, instruct)) != 0)
 			i++;
 		if (op[i].opcode == NULL)
-			instruct_error(op, line_count, instruct);
-		if ((strcmp(op[i].opcode, "pall") != 0) && (clean_arg(num_arg)) == -1)
+			instruct_error(line_count, instruct);
+		if (strcmp(op[i].opcode, "pall") != 0 && clean_arg(num_arg) == -1)
 			int_error(line_count);
 		else
 		{
 			op_address = op[i].f;
-			op_address(&stack_h, clean_arg(num_arg));
+			num = clean_arg(num_arg);
+			op_address(&stack_h, num);
 		}
 		line_count++;
 	}

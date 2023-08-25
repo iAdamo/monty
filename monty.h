@@ -47,11 +47,11 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)));
 
 
-void arg_error(void);
+void arg_error(char *prog_name);
 void file_error(char *fyle);
 void int_error(int line_count);
 void mem_error(void);
-void instruct_error(instruction_t *op, int line_count, char *instruct);
+void instruct_error(int line_count, char *instruct);
 
 void handle_instruction(FILE *file);
 

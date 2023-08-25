@@ -1,11 +1,12 @@
 #include "monty.h"
 /**
  * arg_error - exit program on failure for inadequate argument to the program
+ * @prog_name: programe name
  * Return: Nothing
 */
-void arg_error(void)
+void arg_error(char *prog_name)
 {
-	fprintf(stderr, "USAGE: monty file\n");
+	fprintf(stderr, "USAGE: %s file\n", prog_name);
 	exit_program();
 }
 /**
@@ -40,25 +41,12 @@ void mem_error(void)
 }
 /**
  * instruct_error - exit on failure for file contains an invalid instruction
- * @op: opcode
  * @line_count: line counts
  * @instruct: op instruct
  * Return: Nothing
 */
-void instruct_error(instruction_t *op, int line_count, char *instruct)
+void instruct_error(int line_count, char *instruct)
 {
-	int i = 0, flag = 0;
-
-	while (op[i].opcode)
-	{
-		if (instruct == NULL || (strcmp(op[i].opcode, instruct)) == 0)
-		{
-			flag = 1;
-			break;
-		}
-		i++;
-	}
-	if (flag == 0)
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_count, instruct);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_count, instruct);
 	exit_program();
 }

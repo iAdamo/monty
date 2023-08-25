@@ -45,6 +45,7 @@ typedef struct instruction_s
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)));
+void pop(stack_t **stack, unsigned int line_number);
 
 
 void arg_error(void);
@@ -53,7 +54,9 @@ void int_error(int line_count);
 void mem_error(void);
 void instruct_error(int line_count, char *instruct);
 
+
 void handle_instruction(FILE *file);
+void execute(instruction_t *op, char *instruct, char *num_arg, int line_count);
 
 
 void end_program(void);

@@ -1,5 +1,5 @@
-#ifndef MONTY
-#define MONTY
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,8 +7,8 @@
 #include <unistd.h>
 
 extern FILE *file;
-extern char **line;
-extern stack_t **stack_head;
+extern char *line;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -26,6 +26,7 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern stack_t *stack_h;
 
 /**
  * struct instruction_s - opcode and its function
@@ -41,6 +42,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number __attribute__((unused)));
+
+
+void arg_error(void);
+void file_error(char *fyle);
+void int_error(int line_count);
+void mem_error(void);
+void instruct_error(instruction_t *op, int line_count, char *instruct);
+
+void handle_instruction(FILE *file);
+
+
+void end_program(void);
+void exit_program(void);
+void free_stack(stack_t **stack);
+int clean_arg(char *num_arg);
 
 
 #endif

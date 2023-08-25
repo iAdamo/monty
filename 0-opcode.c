@@ -1,34 +1,17 @@
 #include "monty.h"
-
-void freeStack(**stack)
-{
-	while ((*stack)->next)
-	{
-		*stack = (*stack)->next;
-		free((*stack)->prev);
-	}
-	free(*stack);
-}
-void memError(void)
-{
-	fprintf(stderr, "Error: malloc failed\n");
-	exit_program();
-}
-void exit_program(void)
-{
-	fclose(file);
-	if (line)
-		free(line);
-	exit(EXIT_FAILURE);
-}
-
+/**
+ * push - opcode push pushes an element to the stack.
+ * @stack: stack
+ * @line_number: element
+ * Return: Nothing
+*/
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
 
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
-		memError();
+		mem_error();
 	node->n = line_number;
 
 	if (*stack == NULL)
@@ -40,13 +23,19 @@ void push(stack_t **stack, unsigned int line_number)
 		*stack = node;
 	}
 }
-
+/**
+ * pall - opcode pall prints all the values on the stack, starting from
+ * the top of the stack
+ * @stack: stack
+ * @line_number: void
+ * Return: Nothing
+*/
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *temp;
 
 	temp = *stack;
-	while (*temp)
+	while (temp)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;

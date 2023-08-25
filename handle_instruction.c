@@ -7,7 +7,7 @@
 void handle_instruction(FILE *file)
 {
 	char *instruct, *num_arg;
-	int i, line_count = 1;
+	int line_count = 1;
 	size_t len = 0;
 	instruction_t op[] = {
 		{"push", push},

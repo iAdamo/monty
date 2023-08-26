@@ -64,7 +64,6 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *len;
 	int count = 0;
-	unsigned int temp;
 
 	len = *stack;
 
@@ -90,9 +89,8 @@ void add(stack_t **stack, unsigned int line_number)
  * @line_number: file line count
  * Return: Nothing
 */
-void nop(stack_t **stack, unsigned int line_number)
+void nop(stack_t **stack __attribute__((unused)), unsigned int line_number)
 {
-	(void *)stack;
 	(void)line_number;
 }
 /**
@@ -106,7 +104,6 @@ void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *len;
 	int count = 0;
-	unsigned int temp;
 
 	len = *stack;
 

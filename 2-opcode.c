@@ -10,7 +10,6 @@ void divs(stack_t **stack, unsigned int line_number)
 {
 	stack_t *len;
 	int count = 0;
-	unsigned int temp;
 
 	len = *stack;
 

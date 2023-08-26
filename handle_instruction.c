@@ -29,7 +29,7 @@ void handle_instruction(FILE *file)
 
 	while ((getline(&line, &len, file)) != -1)
 	{
-		if (line == NULL || line[0] == '#')
+		if (line == NULL && line[0] == '#')
 		{
 			line_count++;
 			continue;

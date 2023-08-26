@@ -51,7 +51,12 @@ void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void divs(stack_t **stack, unsigned int line_number);
+<<<<<<< HEAD
 void mul(stack_t **stack, unsigned int line_number);
+=======
+void mod(stack_t **stack, unsigned int line_number);
+
+>>>>>>> 8f537cca6cd9b0ee5093be20c77ea96697ac655a
 
 
 void arg_error(void);

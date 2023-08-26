@@ -31,6 +31,7 @@ void handle_instruction(FILE *file)
 	{
 		if (line[0] == '#' || line[0] == '\n')
 		{
+			printf("Skipping comment or empty line\n");
 			line_count++;
 			continue;
 		}

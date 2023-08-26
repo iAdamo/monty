@@ -1,1 +1,2 @@
-nop
+push 127
+pchar

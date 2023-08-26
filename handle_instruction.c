@@ -19,11 +19,9 @@ void handle_instruction(FILE *file)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divs},
-
 		{"mul", mul},
-
 		{"mod", mod},
-
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 

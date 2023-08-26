@@ -5,6 +5,10 @@
  * @av: argument vector
  * Return: 0 on success
 */
+FILE *file;
+char *line;
+stack_t *stack_h;
+
 int main(int ac, char **av)
 {
 	if (ac != 2)

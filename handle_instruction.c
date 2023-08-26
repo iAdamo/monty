@@ -14,6 +14,11 @@ void handle_instruction(FILE *file)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub", sub},
+		{"div", divs},
 		{NULL, NULL}
 	};
 

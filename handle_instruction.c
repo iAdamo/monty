@@ -12,11 +12,8 @@ void handle_instruction(FILE *file)
 	instruction_t op[] = {
 		{"push", push},
 		{"pall", pall},
-<<<<<<< HEAD
 		{"pint", pint},
-=======
 		{"pop", pop},
->>>>>>> ee991886a7ffab09d2aa28a96ea8c0852f7ba671
 		{NULL, NULL}
 	};
 

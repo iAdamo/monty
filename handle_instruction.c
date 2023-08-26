@@ -3,7 +3,7 @@
  * handle_instruction - handles each opcode instructions and arguments
  * @file: global variable all the file content
  * Return: Nothing
-*/
+ */
 void handle_instruction(FILE *file)
 {
 	char *instruct, *num_arg;
@@ -19,11 +19,17 @@ void handle_instruction(FILE *file)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divs},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 
 	while ((getline(&line, &len, file)) != -1)
 	{
+		if (line[0] == '#' || line[0] == '\n')
+		{
+			line_count++;
+			continue;
+		}
 		instruct = strtok(line, " \n");
 		if (instruct == NULL)
 		{
@@ -46,7 +52,7 @@ void handle_instruction(FILE *file)
  * @num_arg: number arguments
  * @line_count: file line count
  * Return: Nothing
-*/
+ */
 void execute(instruction_t *op, char *instruct, char *num_arg, int line_count)
 {
 	void (*op_address)(stack_t **stack, unsigned int line_number);

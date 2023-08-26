@@ -9,7 +9,6 @@
 extern FILE *file;
 extern char *line;
 
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -52,7 +51,7 @@ void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void divs(stack_t **stack, unsigned int line_number);
-
+void mul(stack_t **stack, unsigned int line_number);
 
 
 void arg_error(void);

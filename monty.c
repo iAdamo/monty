@@ -8,7 +8,6 @@
 FILE *file;
 char *line;
 stack_t *stack_h;
-
 int main(int ac, char **av)
 {
 	if (ac != 2)

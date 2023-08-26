@@ -57,8 +57,6 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	printf("%d\n", (*stack)->n);
 }
-<<<<<<< HEAD
-
 /**
  * mul - opcode mul multiplies the second top element with the top element
  * @stack: stack
@@ -76,5 +74,3 @@ void mul(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n *= (*stack)->n;
 	pop(stack, line_number);
 }
-=======
->>>>>>> 61be4a1f89dc21db96f041483f2a44d63384e945

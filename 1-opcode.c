@@ -31,25 +31,16 @@ void pop(stack_t **stack, unsigned int line_number)
 */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *len, *swapa;
-	int count = 0;
+	stack_t *swapa;
 	unsigned int temp;
 
-	len = *stack;
 	swapa = *stack;
 
-	/*count of stack*/
-	while (len)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		count++;
-		len = len->next;
-	}
-	if (count < 2)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		exit_program();
 	}
-
 	temp = swapa->n;
 	swapa->n = swapa->next->n;
 	swapa->next->n = temp;
@@ -62,20 +53,9 @@ void swap(stack_t **stack, unsigned int line_number)
 */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *len;
-	int count = 0;
-
-	len = *stack;
-
-	/*count of stack*/
-	while (len)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		count++;
-		len = len->next;
-	}
-	if (count < 2)
-	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		exit_program();
 	}
 	(*stack)->next->n += (*stack)->n;
@@ -102,20 +82,9 @@ void nop(stack_t **stack __attribute__((unused)), unsigned int line_number)
 */
 void sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *len;
-	int count = 0;
-
-	len = *stack;
-
-	/*count of stack*/
-	while (len)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		count++;
-		len = len->next;
-	}
-	if (count < 2)
-	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		exit_program();
 	}
 	(*stack)->next->n -= (*stack)->n;

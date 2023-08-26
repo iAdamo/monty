@@ -20,6 +20,7 @@ void handle_instruction(FILE *file)
 		{"sub", sub},
 		{"div", divs},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 

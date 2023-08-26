@@ -4,7 +4,7 @@
  * @stack: stack
  * @line_number: file line count
  * Return: Nothing
-*/
+ */
 void pop(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)

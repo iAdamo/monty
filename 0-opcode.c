@@ -50,7 +50,7 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
  * @line_number: element
  * Return: Nothing
  */
-#include "monty.h"
+
 
 void pint(stack_t **stack, unsigned int line_number)
 {
@@ -61,4 +61,22 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * mul - opcode mul multiplies the second top element with the top element
+ * @stack: stack
+ * @line_number: line number of opcode
+ * Return: Nothing
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+    if (*stack == NULL || (*stack)->next == NULL)
+    {
+        fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    (*stack)->next->n *= (*stack)->n;
+    pop(stack, line_number); // Remove the top element
 }

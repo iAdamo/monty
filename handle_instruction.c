@@ -29,9 +29,8 @@ void handle_instruction(FILE *file)
 
 	while ((getline(&line, &len, file)) != -1)
 	{
-		if (line[0] == '#' || line[0] == '\n')
+		if (line == NULL || line[0] == '#')
 		{
-			printf("Skipping comment or empty line\n");
 			line_count++;
 			continue;
 		}

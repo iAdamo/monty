@@ -19,11 +19,11 @@ void handle_instruction(FILE *file)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divs},
-<<<<<<< HEAD
+
 		{"mul", mul},
-=======
+
 		{"mod", mod},
->>>>>>> 8f537cca6cd9b0ee5093be20c77ea96697ac655a
+
 		{NULL, NULL}
 	};
 

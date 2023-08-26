@@ -1,11 +1,10 @@
 #include "monty.h"
-
 /**
  * push - opcode push pushes an element to the stack.
  * @stack: stack
  * @line_number: element
  * Return: Nothing
- */
+*/
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
@@ -24,14 +23,13 @@ void push(stack_t **stack, unsigned int line_number)
 		*stack = node;
 	}
 }
-
 /**
  * pall - opcode pall prints all the values on the stack, starting from
  * the top of the stack
  * @stack: stack
  * @line_number: void
  * Return: Nothing
- */
+*/
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *temp;
@@ -43,15 +41,12 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		temp = temp->next;
 	}
 }
-
 /**
  * pint - opcode pint prints the value at the top of the stack.
  * @stack: stack
  * @line_number: element
  * Return: Nothing
  */
-
-
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -61,22 +56,4 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 
 	printf("%d\n", (*stack)->n);
-}
-
-/**
- * mul - opcode mul multiplies the second top element with the top element
- * @stack: stack
- * @line_number: line number of opcode
- * Return: Nothing
- */
-void mul(stack_t **stack, unsigned int line_number)
-{
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-
-    (*stack)->next->n *= (*stack)->n;
-    pop(stack, line_number); // Remove the top element
 }

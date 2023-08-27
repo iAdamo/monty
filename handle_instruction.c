@@ -25,8 +25,6 @@ void handle_instruction(FILE *file)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
-		{"stack", stack},
-		{"queue", queue},
 		{NULL, NULL}
 	};
 

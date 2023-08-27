@@ -73,16 +73,19 @@ void pchar(stack_t **stack, unsigned int line_number)
 */
 void pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *stacks = *stack;
+
 	(void)line_number;
 
-	while (*stack && (*stack)->next)
+	while (stacks)
 	{
-		if ((*stack)->n >= 1 && (*stack)->n <= 127)
-			putchar((*stack)->n);
+		if (stacks->n >= 1 && stacks->n <= 127)
+			putchar(stacks->n);
 		else
 			break;
-		*stack = (*stack)->next;
-		free((*stack)->prev);
+		stacks = stacks->next;
+		if (stacks == NULL)
+			break;
 	}
 	putchar('\n');
 }

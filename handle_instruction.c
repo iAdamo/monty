@@ -27,7 +27,11 @@ void handle_instruction(FILE *file)
 
 	while ((getline(&line, &len, file)) != -1)
 	{
+<<<<<<< HEAD
 		if (line == NULL && line[0] == '#')
+=======
+		if (line[0] == '#')
+>>>>>>> ea428b1d2e264426ba6b5e04c5618afa38604121
 		{
 			line_count++;
 			continue;

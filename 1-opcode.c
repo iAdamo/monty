@@ -59,9 +59,7 @@ void add(stack_t **stack, unsigned int line_number)
 		exit_program();
 	}
 	(*stack)->next->n += (*stack)->n;
-	*stack = (*stack)->next;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
+	pop(stack, line_number);
 }
 /**
  * nop - opcode nop doesn’t do anything.
@@ -88,7 +86,5 @@ void sub(stack_t **stack, unsigned int line_number)
 		exit_program();
 	}
 	(*stack)->next->n -= (*stack)->n;
-	*stack = (*stack)->next;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
+	pop(stack, line_number);
 }

@@ -22,18 +22,18 @@ void handle_instruction(FILE *file)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
+		{"stack", stack},
+		{"queue", queue},
 		{NULL, NULL}
 	};
 
 	while ((getline(&line, &len, file)) != -1)
 	{
-		if (line[0] == '#')
-		{
-			line_count++;
-			continue;
-		}
 		instruct = strtok(line, " \n");
-		if (instruct == NULL)
+		if (instruct == NULL || strcmp(instruct, "#") == 0 || instruct[0] == '#')
 		{
 			line_count++;
 			continue;

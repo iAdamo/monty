@@ -74,3 +74,24 @@ void mul(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n *= (*stack)->n;
 	pop(stack, line_number);
 }
+/**
+ * rotr - rotates the stack to the bottom.
+ * @stack: stack
+ * @line_number: file line count
+ * Return: Nothing
+*/
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *last = *stack;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+
+	while (last->next->next)
+		last = last->next;
+	while (last)
+	{
+		swap(&last, line_number);
+		last = last->prev;
+	}
+}

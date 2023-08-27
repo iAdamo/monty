@@ -89,5 +89,5 @@ int iclean_atoi(char *num_arg)
 			return (0);
 		i++;
 	}
-	return (num);
+	return (sign * num);
 }

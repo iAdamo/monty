@@ -43,7 +43,8 @@ typedef struct instruction_s
 
 
 void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number __attribute__((unused)));
+void push_queue(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
@@ -57,6 +58,9 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+
 
 
 
@@ -70,7 +74,8 @@ void instruct_error(int line_count, char *instruct);
 
 
 void handle_instruction(FILE *file);
-void execute(instruction_t *op, char *instruct, char *num_arg, int line_count);
+void exestack(instruction_t *op, char *instruct, char *num_arg, int line_count);
+void exequeue(instruction_t *op, char *instruct, char *num_arg, int line_count);
 
 
 void end_program(void);
